@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Translation App</title>
+        <style>
+            /* General Styles */
+            body {
+                font-family: 'Roboto', sans-serif;
+                background-color: #e3f2fd;
+                color: #212121;
+                margin: 0;
+                padding: 0;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 100vh;
+            }
+
+            /* Form Container */
+            .container {
+                background-color: #ffffff;
+                padding: 40px;
+                border-radius: 12px;
+                box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+                width: 100%;
+                max-width: 450px;
+                text-align: center;
+            }
+
+            h1 {
+                font-size: 28px;
+                margin-bottom: 20px;
+                color: #1565c0;
+            }
+
+            label {
+                font-size: 16px;
+                color: #424242;
+                display: block;
+                margin-bottom: 8px;
+                text-align: left;
+            }
+
+            input[type="text"] {
+                width: 100%;
+                padding: 12px;
+                margin: 10px 0 20px 0;
+                border: 1px solid #bdbdbd;
+                border-radius: 8px;
+                font-size: 16px;
+                box-sizing: border-box;
+            }
+
+            button {
+                background-color: #1565c0;
+                color: #ffffff;
+                padding: 12px 20px;
+                border: none;
+                border-radius: 8px;
+                font-size: 16px;
+                cursor: pointer;
+                transition: background-color 0.3s ease;
+            }
+
+            button:hover {
+                background-color: #0d47a1;
+            }
+
+            /* Translated Text Section */
+            .translated-text {
+                margin-top: 30px;
+                padding: 20px;
+                background-color: #f1f8e9;
+                border-radius: 8px;
+                box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+                color: #2e7d32;
+                font-size: 18px;
+                text-align: left;
+            }
+
+            .translated-text h2 {
+                font-size: 20px;
+                margin-bottom: 10px;
+                color: #1b5e20;
+            }
+
+            .translated-text p {
+                margin: 0;
+                word-wrap: break-word;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <form name="form" action="/generate" method="POST">
+                <h1>Translation App</h1>
+                <label for="text">Enter Text to Translate:</label>
+                <input type="text" id="text" name="Text" placeholder="Type something..." required />
+                <button type="submit">Translate</button>
+            </form>
+
+            {% if output %}
+                <div class="translated-text">
+                    <h2>Translated Text:</h2>
+                    <p>{{ output }}</p>
+                </div>
+            {% endif %}
+        </div>
+    </body>
+</html>
